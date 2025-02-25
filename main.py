@@ -131,6 +131,10 @@ async def update_poll_if_needed():
 )
 async def add_poll_option(ctx: SlashContext, option_text: str):
     options = load_poll_options()
+    if option_text in options:
+        await ctx.send(f"L'option **{option_text}** existe déjà.", ephemeral=True)
+        return
+
     options.append(option_text)
     save_poll_options(options)
     await ctx.send(f"L'option **{option_text}** a été ajoutée.", ephemeral=True)
