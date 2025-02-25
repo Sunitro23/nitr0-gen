@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  nitr0-gen:
+    build: .
+    container_name: nitr0-gen
+    env_file: 
+      - .env
+    restart: unless-stopped
